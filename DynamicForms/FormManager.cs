@@ -8,8 +8,6 @@ namespace DynamicForms
 {
     public class FormManager
     {
-        private readonly List<Form> _forms;
-
         public List<Form> Forms { get; }
 
         public FormManager()
