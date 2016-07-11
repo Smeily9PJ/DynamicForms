@@ -9,7 +9,7 @@ namespace DynamicForms
 {
     public class FormAnswer
     {
-        public List<AnswerBase<Task>> Answers { get; }
+        public List<AnswerBase> Answers { get; }
         public int AnswerCount => this.Answers.Count;
 
         public FormAnswer()
@@ -19,9 +19,9 @@ namespace DynamicForms
 
         public AnswerBase AddAnswerFor(QuestionBase question)
         {
-            var ab = new OpenAnswer(question);
-            this.Answers.Add(ab);
-            return ab;
+            var a = question.CreateAnswer();
+            this.Answers.Add(a);
+            return a;
         }
 
         public AnswerBase FindAnswerFor(QuestionBase question)

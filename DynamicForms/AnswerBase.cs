@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DynamicForms
 {
-    public abstract class AnswerBase<T>
+    public abstract class AnswerBase
     {
         public QuestionBase Question { get; }
 
-        public T Content { get; set; }
+        public object Content { get; protected set; }
 
-        public AnswerBase(QuestionBase question)
+        protected AnswerBase(QuestionBase question)
         {
             this.Question = question;
         }

@@ -8,7 +8,7 @@ namespace DynamicForms
 {
     public abstract class QuestionBase
     {
-        protected List<AnswerBase> _answers;
+        protected readonly List<AnswerBase> _answers;
 
         public IReadOnlyList<AnswerBase> Answers => this._answers;
 
