@@ -10,7 +10,7 @@ namespace DynamicForms
     {
         public QuestionBase Question { get; }
 
-        public object Content { get; protected set; }
+        public object Content { get; set; }
 
         protected AnswerBase(QuestionBase question)
         {

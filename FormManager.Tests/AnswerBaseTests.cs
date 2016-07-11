@@ -15,14 +15,14 @@ namespace DynamicForms.Tests
         [Test]
         public void CheckAnswer()
         {
-            var a = new OpenAnswer(new OpenQuestion());
+            var a = new OpenAnswer(new OpenQuestion(null));
             Assert.IsNotNull(a);
         }
 
         [Test]
         public void CheckAnswerQuestion()
         {
-            var q = new OpenQuestion();
+            var q = new OpenQuestion(null);
             var a = new OpenAnswer(q);
             Assert.AreSame(a.Question, q);
         }
@@ -30,9 +30,13 @@ namespace DynamicForms.Tests
         [Test]
         public void AnswerContent()
         {
-            var q = new OpenQuestion();
+            var q = new OpenQuestion(null);
             var a = new OpenAnswer(q);
-            Assert.IsNotNull(a.Content);
+            Assert.IsNull(a.Content);
+            string response = "Réponse !!!!!!!!!";
+            a.Content = "Réponse !!!!!!!!!";
+            Assert.IsInstanceOf<string>(a.Content);
+            Assert.AreEqual(a.Content, response);
         }
     }
 }

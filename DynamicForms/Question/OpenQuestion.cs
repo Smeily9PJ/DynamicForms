@@ -9,6 +9,11 @@ namespace DynamicForms.Question
 {
     public class OpenQuestion : QuestionBase
     {
+        public OpenQuestion(QuestionBase parent) : base(parent)
+        {
+            if (parent == null) throw new ArgumentNullException("parent");
+        }
+
         public override AnswerBase CreateAnswer()
         {
             var a = new OpenAnswer(this);

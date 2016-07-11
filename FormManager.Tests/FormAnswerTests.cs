@@ -36,7 +36,7 @@ namespace DynamicForms.Tests
         public void AddAnswer()
         {
             var fa = new FormAnswer();
-            var ab = fa.AddAnswerFor(new OpenQuestion());
+            var ab = fa.AddAnswerFor(new OpenQuestion(null));
             Assert.AreEqual(1, fa.AnswerCount);
         }
 
@@ -44,7 +44,7 @@ namespace DynamicForms.Tests
         public void FindAnswer()
         {
             var fa = new FormAnswer();
-            var ab = fa.FindAnswerFor(new OpenQuestion());
+            var ab = fa.FindAnswerFor(new OpenQuestion(null));
             Assert.IsNull(ab);
         }
 
@@ -52,7 +52,7 @@ namespace DynamicForms.Tests
         public void FindOneAnswer()
         {
             var fa = new FormAnswer();
-            var q = new OpenQuestion();
+            var q = new OpenQuestion(null);
             var ab1 = fa.AddAnswerFor(q);
             Assert.IsNotNull(ab1);
             var ab2 = fa.FindAnswerFor(q);
