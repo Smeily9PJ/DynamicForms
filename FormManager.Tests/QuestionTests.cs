@@ -1,4 +1,5 @@
 ﻿
+using DynamicForms.Question;
 using NUnit.Framework;
 
 namespace DynamicForms.Tests
@@ -9,8 +10,24 @@ namespace DynamicForms.Tests
         [Test]
         public void CheckQuestion()
         {
-            //var q = new Question();
-           // Assert.IsNotNull(q);
+            var q = new OpenQuestion();
+            Assert.IsNotNull(q);
+        }
+
+        [Test]
+        public void CheckAnswers()
+        {
+            var q = new OpenQuestion();
+            Assert.IsNotNull(q.Answers);
+        }
+
+        [Test]
+        public void CreateAnswer()
+        {
+            var q = new OpenQuestion();
+            var a = q.CreateAnswer();
+            Assert.IsNotNull(a);
+
         }
     }
 }

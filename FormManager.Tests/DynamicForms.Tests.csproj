@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnswerBaseTests.cs" />
     <Compile Include="FormAnswerTests.cs" />
     <Compile Include="FormTests.cs" />
     <Compile Include="QuestionRootTests.cs" />
