@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DynamicForms.Questions;
 
-namespace DynamicForms
+namespace DynamicForms.Answers
 {
     public abstract class AnswerBase
     {
@@ -15,6 +11,12 @@ namespace DynamicForms
         protected AnswerBase(QuestionBase question)
         {
             this.Question = question;
+        }
+
+        protected AnswerBase(QuestionBase question, object content)
+            : this(question)
+        {
+            this.Content = content;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DynamicForms.Questions;
+using NUnit.Framework;
 
 namespace DynamicForms.Tests
 {
@@ -86,8 +87,9 @@ namespace DynamicForms.Tests
         public void CheckQuestions()
         {
             var f = new Form();
-            Assert.IsNotNull(f.Questions);
-            Assert.IsInstanceOf<QuestionRoot>(f.Questions);
+            Assert.IsNotNull(f.Root);
+            Assert.IsInstanceOf<QuestionRoot>(f.Root);
+            Assert.AreSame(f.Root.Form, f);
         }
     }
 }

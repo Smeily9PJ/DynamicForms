@@ -29,6 +29,5 @@ namespace DynamicForms.Tests
             Assert.AreEqual(1, fm.Forms.Count);
             Assert.IsInstanceOf<Form>(f);
         }
-
     }
 }

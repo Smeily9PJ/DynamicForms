@@ -1,23 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DynamicForms.Questions;
 
 namespace DynamicForms
 {
     public class Form
     {
-        private Dictionary<string, FormAnswer> FormAnswers;
-        public string Title { get; set; }
-        public int FormAnswerCount => FormAnswers.Count;
+        private readonly Dictionary<string, FormAnswer> _formAnswers;
 
-        public QuestionRoot Questions { get; set; }
+        public string Title { get; set; }
+        public int FormAnswerCount => _formAnswers.Count;
+        public IReadOnlyList<FormAnswer> FormAnswers => _formAnswers.Values.ToList();
+
+        public QuestionRoot Root { get; }
 
         public Form()
         {
-            this.FormAnswers = new Dictionary<string, FormAnswer>();
-            this.Questions = new QuestionRoot();
+            this._formAnswers = new Dictionary<string, FormAnswer>();
+            this.Root = new QuestionRoot(this);
         }
 
         public FormAnswer FindOrCreateFormAnswer(string user)
@@ -27,13 +27,13 @@ namespace DynamicForms
                 return null;
             }
 
-            if (this.FormAnswers.ContainsKey(user))
+            if (this._formAnswers.ContainsKey(user))
             {
-                return this.FormAnswers[user];
+                return this._formAnswers[user];
             }
 
             var fa = new FormAnswer();
-            this.FormAnswers.Add(user, fa);
+            this._formAnswers.Add(user, fa);
             return fa;
         }
     }

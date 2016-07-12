@@ -1,11 +1,6 @@
-﻿using DynamicForms.Answer;
-using DynamicForms.Question;
+﻿using DynamicForms.Answers;
+using DynamicForms.Questions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynamicForms.Tests
 {
@@ -15,14 +10,17 @@ namespace DynamicForms.Tests
         [Test]
         public void CheckAnswer()
         {
-            var a = new OpenAnswer(new OpenQuestion(null));
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
+            var a = new OpenAnswer(q);
             Assert.IsNotNull(a);
         }
 
         [Test]
         public void CheckAnswerQuestion()
         {
-            var q = new OpenQuestion(null);
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
             var a = new OpenAnswer(q);
             Assert.AreSame(a.Question, q);
         }
@@ -30,7 +28,8 @@ namespace DynamicForms.Tests
         [Test]
         public void AnswerContent()
         {
-            var q = new OpenQuestion(null);
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
             var a = new OpenAnswer(q);
             Assert.IsNull(a.Content);
             string response = "Réponse !!!!!!!!!";

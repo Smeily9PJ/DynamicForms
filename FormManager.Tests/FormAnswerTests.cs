@@ -1,15 +1,10 @@
-﻿using DynamicForms.Question;
+﻿using DynamicForms.Questions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DynamicForms.Tests
 {
     [TestFixture]
-    class FormAnswerTests
+    public class FormAnswerTests
     {
         [Test]
         public void CheckFormAnswer()
@@ -35,24 +30,34 @@ namespace DynamicForms.Tests
         [Test]
         public void AddAnswer()
         {
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
+
             var fa = new FormAnswer();
-            var ab = fa.AddAnswerFor(new OpenQuestion(null));
+            var ab = fa.AddAnswerFor(q);
+            Assert.IsNotNull(ab);
             Assert.AreEqual(1, fa.AnswerCount);
+            Assert.AreEqual(1, q.Answers.Count);
         }
 
         [Test]
         public void FindAnswer()
         {
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
+
             var fa = new FormAnswer();
-            var ab = fa.FindAnswerFor(new OpenQuestion(null));
+            var ab = fa.FindAnswerFor(q);
             Assert.IsNull(ab);
         }
 
         [Test]
         public void FindOneAnswer()
         {
+            var f = new Form();
+            var q = new OpenQuestion(f.Root);
+
             var fa = new FormAnswer();
-            var q = new OpenQuestion(null);
             var ab1 = fa.AddAnswerFor(q);
             Assert.IsNotNull(ab1);
             var ab2 = fa.FindAnswerFor(q);
