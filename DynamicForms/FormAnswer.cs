@@ -8,23 +8,23 @@ namespace DynamicForms
     public class FormAnswer
     {
         public List<AnswerBase> Answers { get; }
-        public int AnswerCount => this.Answers.Count;
+        public int AnswerCount => Answers.Count;
 
         public FormAnswer()
         {
-            this.Answers = new List<AnswerBase>();
+            Answers = new List<AnswerBase>();
         }
 
         public AnswerBase AddAnswerFor(QuestionBase question)
         {
             var a = question.CreateAnswer();
-            this.Answers.Add(a);
+            Answers.Add(a);
             return a;
         }
 
         public AnswerBase FindAnswerFor(QuestionBase question)
         {
-            return this.Answers.FirstOrDefault(a => a.Question.Equals(question));
+            return Answers.FirstOrDefault(a => a.Question.Equals(question));
         }
     }
 }

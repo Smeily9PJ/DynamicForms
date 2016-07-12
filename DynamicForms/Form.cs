@@ -16,8 +16,8 @@ namespace DynamicForms
 
         public Form()
         {
-            this._formAnswers = new Dictionary<string, FormAnswer>();
-            this.Root = new QuestionRoot(this);
+            _formAnswers = new Dictionary<string, FormAnswer>();
+            Root = new QuestionRoot(this);
         }
 
         public FormAnswer FindOrCreateFormAnswer(string user)
@@ -27,13 +27,13 @@ namespace DynamicForms
                 return null;
             }
 
-            if (this._formAnswers.ContainsKey(user))
+            if (_formAnswers.ContainsKey(user))
             {
-                return this._formAnswers[user];
+                return _formAnswers[user];
             }
 
             var fa = new FormAnswer();
-            this._formAnswers.Add(user, fa);
+            _formAnswers.Add(user, fa);
             return fa;
         }
     }

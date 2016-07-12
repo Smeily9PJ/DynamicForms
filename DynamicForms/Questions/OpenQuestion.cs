@@ -6,7 +6,7 @@ namespace DynamicForms.Questions
 {
     public class OpenQuestion : QuestionBase
     {
-        public OpenQuestion(QuestionBase parent) 
+        public OpenQuestion(QuestionBase parent)
             : this(parent, string.Empty)
         {
 
@@ -21,7 +21,7 @@ namespace DynamicForms.Questions
         public override AnswerBase CreateAnswer()
         {
             var a = new OpenAnswer(this);
-            this.AnswersList.Add(a);
+            AnswersList.Add(a);
             return a;
         }
 

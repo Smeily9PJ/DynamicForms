@@ -9,8 +9,8 @@ namespace DynamicForms.Questions
         public QuestionRoot(Form form, string title = "")
             : base(title)
         {
-            if(form == null) throw new ArgumentNullException(nameof(form));
-            this.Form = form;
+            if (form == null) throw new ArgumentNullException(nameof(form));
+            Form = form;
         }
     }
 }
