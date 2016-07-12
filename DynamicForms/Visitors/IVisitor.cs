@@ -1,8 +1,18 @@
-﻿namespace DynamicForms.Visitors
+﻿using DynamicForms.Answers;
+using DynamicForms.Questions;
+
+namespace DynamicForms.Visitors
 {
     public interface IVisitor<T>
     {
-        T Visit(IVisitorObject obj);
+        T Visit(Form f);
+        T Visit(FormAnswer f);
+
+        T Visit(QuestionFolder q);
+        T Visit(QuestionRoot q);
+        T Visit(OpenQuestion q);
+
+        T Visit(OpenAnswer a);
     }
 
     public static class VisitorExtensions

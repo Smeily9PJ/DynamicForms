@@ -12,7 +12,7 @@ namespace DynamicForms.Questions
 
         public IReadOnlyList<QuestionBase> Questions => _questions;
 
-        private QuestionFolder(QuestionBase parent, string title = "") 
+        private QuestionFolder(QuestionBase parent, string title = "")
             : base(parent, title)
         {
             CheckParentIsNotNull(parent);
@@ -32,7 +32,7 @@ namespace DynamicForms.Questions
 
         public QuestionBase CreateQuestion(Type questionType, string title = "", params object[] parameters)
         {
-            if(!questionType.IsSubclassOf(typeof(QuestionBase))) throw new ArgumentException($"{nameof(questionType)} is not of type QuestionBase");
+            if (!questionType.IsSubclassOf(typeof(QuestionBase))) throw new ArgumentException($"{nameof(questionType)} is not of type QuestionBase");
 
             var o = parameters != null && parameters.Any()
                 ? Activator.CreateInstance(questionType, this, title, parameters)
@@ -61,6 +61,21 @@ namespace DynamicForms.Questions
         public override T Accept<T>(IVisitor<T> obj)
         {
             throw new NotImplementedException();
+        }
+
+        internal int GetIndexOf(QuestionBase question)
+        {
+            return _questions.IndexOf(question);
+        }
+
+        internal void ChangeIndexOfQuestion(QuestionBase question, int index)
+        {
+            if (question == null) throw new ArgumentNullException(nameof(question));
+            if (index < 0 || index >= _questions.Count) throw new ArgumentOutOfRangeException(nameof(index));
+
+            var currentIndex = _questions.IndexOf(question);
+            _questions.RemoveAt(currentIndex);
+            _questions.Insert(index, question);
         }
     }
 }

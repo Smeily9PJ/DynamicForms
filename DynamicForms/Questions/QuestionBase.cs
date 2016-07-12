@@ -8,16 +8,36 @@ namespace DynamicForms.Questions
 {
     public abstract class QuestionBase : IVisitorObject
     {
-        public IReadOnlyList<AnswerBase> Answers => this.AnswersList;
-        public QuestionBase Parent { get; private set; }
+        public IReadOnlyList<AnswerBase> Answers => AnswersList;
+        public QuestionBase Parent { get; }
         public string Title { get; set; }
+
+        public int Index
+        {
+            get
+            {
+                if (Parent.GetType().IsSubclassOf(typeof(QuestionFolder)))
+                {
+                    return ((QuestionFolder)Parent).GetIndexOf(this);
+                }
+                return -1;
+            }
+            set
+            {
+                if (Parent.GetType().IsSubclassOf(typeof(QuestionFolder)))
+                {
+                    ((QuestionFolder)Parent).ChangeIndexOfQuestion(this, value);
+                }
+            }
+        }
+
         protected readonly List<AnswerBase> AnswersList;
 
         protected QuestionBase(QuestionBase parent, string title = "")
         {
-            this.AnswersList = new List<AnswerBase>();
-            this.Parent = parent;
-            this.Title = title;
+            AnswersList = new List<AnswerBase>();
+            Parent = parent;
+            Title = title;
         }
 
         internal QuestionBase(string title)
@@ -25,10 +45,10 @@ namespace DynamicForms.Questions
         {
         }
 
-        public virtual void ClearAnswers()
+        public void ClearAnswers()
         {
             ClearAnswersInFormAnswer(this);
-            this.AnswersList.Clear();
+            AnswersList.Clear();
         }
 
         public abstract AnswerBase CreateAnswer();
@@ -37,7 +57,7 @@ namespace DynamicForms.Questions
 
         protected void CheckParentIsNotNull(QuestionBase parent)
         {
-            if(parent == null) throw new ArgumentNullException(nameof(parent));
+            if (parent == null) throw new ArgumentNullException(nameof(parent));
         }
 
         private void ClearAnswersInFormAnswer(QuestionBase parent)

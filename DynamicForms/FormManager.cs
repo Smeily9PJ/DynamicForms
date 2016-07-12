@@ -8,7 +8,7 @@ namespace DynamicForms
 
         public FormManager()
         {
-            this.Forms = new List<Form>();
+            Forms = new List<Form>();
         }
     }
 }

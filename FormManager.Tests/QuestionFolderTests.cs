@@ -121,5 +121,40 @@ namespace DynamicForms.Tests
             Assert.AreEqual(0, q.Answers.Count);
             Assert.AreEqual(0, fa.AnswerCount);
         }
+
+        [Test]
+        public void MoveQuestionInList()
+        {
+            var f = new Form();
+            var r = f.Root;
+
+            var q0 = r.CreateQuestion(typeof(OpenQuestion), "0");
+            var q1 = r.CreateQuestion(typeof(OpenQuestion), "1");
+            var q2 = r.CreateQuestion(typeof(OpenQuestion), "2");
+            var q3 = r.CreateQuestion(typeof(OpenQuestion), "3");
+            var q4 = r.CreateQuestion(typeof(OpenQuestion), "4");
+            var q5 = r.CreateQuestion(typeof(OpenQuestion), "5");
+            var q6 = r.CreateQuestion(typeof(OpenQuestion), "6");
+            var q7 = r.CreateQuestion(typeof(OpenQuestion), "7");
+            Assert.AreEqual(0, q0.Index);
+            Assert.AreEqual(1, q1.Index);
+            Assert.AreEqual(2, q2.Index);
+            Assert.AreEqual(3, q3.Index);
+            Assert.AreEqual(4, q4.Index);
+            Assert.AreEqual(5, q5.Index);
+            Assert.AreEqual(6, q6.Index);
+            Assert.AreEqual(7, q7.Index);
+
+            q4.Index = 1;
+
+            Assert.AreEqual(0, q0.Index);
+            Assert.AreEqual(1, q4.Index);
+            Assert.AreEqual(2, q1.Index);
+            Assert.AreEqual(3, q2.Index);
+            Assert.AreEqual(4, q3.Index);
+            Assert.AreEqual(5, q5.Index);
+            Assert.AreEqual(6, q6.Index);
+            Assert.AreEqual(7, q7.Index);
+        }
     }
 }
