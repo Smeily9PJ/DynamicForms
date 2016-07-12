@@ -7,27 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms.Tests", "FormM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicForms", "DynamicForms\DynamicForms.csproj", "{5D4F6A1A-A2FB-4A5A-BA5F-FEACA0075C64}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GestionFormulaires", "GestionFormulaires\", "{CE23E132-1BE4-4841-8D1E-8C4136AE0295}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_56363"
-		Debug.AspNetCompiler.PhysicalPath = "GestionFormulaires\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56363\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_56363"
-		Release.AspNetCompiler.PhysicalPath = "GestionFormulaires\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56363\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "56363"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,10 +21,6 @@ Global
 		{5D4F6A1A-A2FB-4A5A-BA5F-FEACA0075C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D4F6A1A-A2FB-4A5A-BA5F-FEACA0075C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D4F6A1A-A2FB-4A5A-BA5F-FEACA0075C64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CE23E132-1BE4-4841-8D1E-8C4136AE0295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE23E132-1BE4-4841-8D1E-8C4136AE0295}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE23E132-1BE4-4841-8D1E-8C4136AE0295}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE23E132-1BE4-4841-8D1E-8C4136AE0295}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
