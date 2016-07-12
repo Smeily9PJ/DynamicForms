@@ -50,6 +50,7 @@
     <Compile Include="Questions\QuestionRoot.cs" />
     <Compile Include="Questions\OpenQuestion.cs" />
     <Compile Include="Questions\QuestionFolder.cs" />
+    <Compile Include="Visitors\HtmlVisitor.cs" />
     <Compile Include="Visitors\IVisitor.cs" />
     <Compile Include="Visitors\IVisitorObject.cs" />
   </ItemGroup>

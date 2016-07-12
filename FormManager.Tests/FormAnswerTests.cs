@@ -24,7 +24,7 @@ namespace DynamicForms.Tests
         public void CountAnswers()
         {
             var fa = new FormAnswer();
-            Assert.AreEqual(0, fa.AnswerCount);
+            Assert.AreEqual(0, fa.Answers.Count);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace DynamicForms.Tests
             var fa = new FormAnswer();
             var ab = fa.AddAnswerFor(q);
             Assert.IsNotNull(ab);
-            Assert.AreEqual(1, fa.AnswerCount);
+            Assert.AreEqual(1, fa.Answers.Count);
             Assert.AreEqual(1, q.Answers.Count);
         }
 

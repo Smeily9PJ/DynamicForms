@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Diagnostics;
 using DynamicForms.Answers;
 using DynamicForms.Visitors;
 
@@ -25,9 +25,10 @@ namespace DynamicForms.Questions
             return a;
         }
 
+        [DebuggerStepThrough]
         public override T Accept<T>(IVisitor<T> obj)
         {
-            throw new NotImplementedException();
+            return obj.Visit(this);
         }
     }
 }

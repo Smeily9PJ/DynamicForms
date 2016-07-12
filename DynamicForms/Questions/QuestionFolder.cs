@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using DynamicForms.Answers;
 using DynamicForms.Visitors;
@@ -27,7 +28,9 @@ namespace DynamicForms.Questions
 
         public QuestionFolder CreateQuestionFolder(string title = "")
         {
-            return new QuestionFolder(this, title);
+            var qf = new QuestionFolder(this, title);
+            _questions.Add(qf);
+            return qf;
         }
 
         public QuestionBase CreateQuestion(Type questionType, string title = "", params object[] parameters)
@@ -58,9 +61,10 @@ namespace DynamicForms.Questions
             return null;
         }
 
+        [DebuggerStepThrough]
         public override T Accept<T>(IVisitor<T> obj)
         {
-            throw new NotImplementedException();
+            return obj.Visit(this);
         }
 
         internal int GetIndexOf(QuestionBase question)
