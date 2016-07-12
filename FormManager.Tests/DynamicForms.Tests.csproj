@@ -98,6 +98,7 @@
     <Compile Include="AnswerBaseTests.cs" />
     <Compile Include="FormAnswerTests.cs" />
     <Compile Include="FormTests.cs" />
+    <Compile Include="HtmlVisitorTests.cs" />
     <Compile Include="QuestionFolderTests.cs" />
     <Compile Include="QuestionRootTests.cs" />
     <Compile Include="QuestionTests.cs" />

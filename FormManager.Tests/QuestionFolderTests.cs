@@ -46,11 +46,16 @@ namespace DynamicForms.Tests
         public void HierachyOfQuestions()
         {
             var f = new Form();
-
             var r = f.Root;
+            Assert.AreEqual(0, r.Questions.Count);
+
             var q1 = r.CreateQuestion(typeof(OpenQuestion));
+            Assert.AreEqual(1, r.Questions.Count);
 
             var f1 = r.CreateQuestionFolder();
+            Assert.AreEqual(2, r.Questions.Count);
+            Assert.IsNotNull(r.Questions[1]);
+            Assert.AreSame(f1, r.Questions[1]);
             var q2 = f1.CreateQuestion(typeof(OpenQuestion));
 
             var f2 = f1.CreateQuestionFolder();

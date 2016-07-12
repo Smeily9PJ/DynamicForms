@@ -5,6 +5,7 @@ namespace DynamicForms.Visitors
 {
     public interface IVisitor<T>
     {
+        T Visit(FormManager f);
         T Visit(Form f);
         T Visit(FormAnswer f);
 

@@ -11,7 +11,7 @@ namespace DynamicForms.Questions
         public IReadOnlyList<AnswerBase> Answers => AnswersList;
         public QuestionBase Parent { get; }
         public string Title { get; set; }
-
+        public string Content { get; set; }
         public int Index
         {
             get

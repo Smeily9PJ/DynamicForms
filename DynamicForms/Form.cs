@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using DynamicForms.Questions;
+using DynamicForms.Visitors;
 
 namespace DynamicForms
 {
-    public class Form
+    public class Form : IVisitorObject
     {
         private readonly Dictionary<string, FormAnswer> _formAnswers;
 
@@ -14,10 +16,11 @@ namespace DynamicForms
 
         public QuestionRoot Root { get; }
 
-        public Form()
+        public Form(string title = "")
         {
             _formAnswers = new Dictionary<string, FormAnswer>();
             Root = new QuestionRoot(this);
+            Title = title;
         }
 
         public FormAnswer FindOrCreateFormAnswer(string user)
@@ -35,6 +38,12 @@ namespace DynamicForms
             var fa = new FormAnswer();
             _formAnswers.Add(user, fa);
             return fa;
+        }
+
+        [DebuggerStepThrough]
+        public T Accept<T>(IVisitor<T> obj)
+        {
+            return obj.Visit(this);
         }
     }
 }
