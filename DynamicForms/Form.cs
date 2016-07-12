@@ -13,7 +13,6 @@ namespace DynamicForms
         public string Title { get; set; }
         public int FormAnswerCount => _formAnswers.Count;
         public IReadOnlyList<FormAnswer> FormAnswers => _formAnswers.Values.ToList();
-
         public QuestionRoot Root { get; }
 
         public Form(string title = "")

@@ -11,14 +11,14 @@ namespace DynamicForms.Visitors
     {
         public string Visit(FormManager f)
         {
-            var forms = f.Forms.Select(x => $"<div>\n<span>{x.Title}</span><button type='button'>Voir</button>\n</div>");
-            return $"<div>{string.Join("", forms)}</div>\n";
+            var forms = f.Forms.Select(x => $"<div><span>{x.Title}</span><button type='button'>Voir</button></div>");
+            return $"<div>{string.Join("", forms)}</div>";
         }
 
         public string Visit(Form f)
         {
             var content = f.Root.Accept(this);
-            return $"<div>\n<h1>{f.Title}</h1>\n{content}\n</div>\n";
+            return $"<div><h1>{f.Title}</h1>{content}</div>";
         }
 
         public string Visit(FormAnswer f)
@@ -29,23 +29,23 @@ namespace DynamicForms.Visitors
         public string Visit(QuestionFolder q)
         {
             var content = VisitAllQuestions(q.Questions);
-            return $"<div>\n<h3 class='label label-default'>{q.Title}</h3>\n{content}\n</div>\n";
+            return $"<div><h3 class='label label-default'>{q.Title}</h3>{content}</div>";
         }
 
         public string Visit(QuestionRoot q)
         {
             var content = VisitAllQuestions(q.Questions);
-            return $"<div>\n<h2 class='label label-default'>{q.Title}</h2>\n{content}\n</div>\n";
+            return $"<div><h2 class='label label-default'>{q.Title}</h2>{content}</div>";
         }
 
         public string Visit(OpenQuestion q)
         {
-            return $"<div>\n<h4 class='label label-default'>{q.Title}</h4>\n<div>\n{q.Content}\n</div>\n</div>\n";
+            return $"<div><h4 class='label label-default'>{q.Title}</h4><div>{q.Content}</div></div>";
         }
 
         public string Visit(OpenAnswer a)
         {
-            return $"<textarea class='form-control'>{a.Content}</textarea>\n";
+            return $"<textarea class='form-control'>{a.Content}</textarea>";
         }
 
         private string VisitAllQuestions(IEnumerable<QuestionBase> questions)
@@ -54,7 +54,7 @@ namespace DynamicForms.Visitors
             foreach (var question in questions)
             {
                 sb.Append(question.Accept(this));
-                sb.Append("\n");
+                sb.Append("");
             }
             return sb.ToString();
         }

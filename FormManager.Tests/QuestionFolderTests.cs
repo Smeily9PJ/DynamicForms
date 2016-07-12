@@ -124,7 +124,7 @@ namespace DynamicForms.Tests
 
             r.RemoveQuestion(q);
             Assert.AreEqual(0, q.Answers.Count);
-            Assert.AreEqual(0, fa.AnswerCount);
+            Assert.AreEqual(0, fa.Answers.Count);
         }
 
         [Test]

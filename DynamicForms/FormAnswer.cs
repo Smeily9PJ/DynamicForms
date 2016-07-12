@@ -10,7 +10,6 @@ namespace DynamicForms
     public class FormAnswer : IVisitorObject
     {
         public List<AnswerBase> Answers { get; }
-        public int AnswerCount => Answers.Count;
 
         public FormAnswer()
         {
